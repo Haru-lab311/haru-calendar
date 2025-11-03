@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haruto's calendar!</title>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+  <script src="script.js" defer></script>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://use.fontawesome.com/releases/v7.1.0/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!--calender-->
+
+<div id="calendar">
+  <div id="navBar">
+    <div class="left-controls">
+      <i class="fa-solid fa-leaf"></i>
+      <h1>Haru Calendar</h1>
+      <span class="nav" onclick="prevMonth()">
+        <i class="fa-solid fa-arrow-left"></i>
+      </span>
+      <span class="nav" onclick="nextMonth()">
+        <i class="fa-solid fa-arrow-right"></i>
+      </span>
+      <span id="monthYear"></span>
+    </div>
+
+    <span class="nav" id="addBtn" onclick="openForm()">
+      <i class="fa-solid fa-plus"></i>
+    </span>
+  </div>
+
+  <table id="calendarTable">
+    <thead>
+      <tr>
+        <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th>
+        <th>Thu</th><th>Fri</th><th>Sat</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!--slide form-->
+<div id="formContainer">
+  <form id="appointmentForm">
+
+    <!-- Title-->
+    <h2 id="formTitle"></h2>
+
+    <input type="text" id="apptTitle" placeholder="Title..." required>
+
+    <div class="formRow">
+      <label>Starts</label>
+      <input type="date" id="startDate" required>
+      <input type="time" class="timeInput" id="startTime" required>
+    </div>
+
+    <div class="formRow" id="timeRow">
+      <label>Ends</label>
+      <input type="date" id="endDate" required>
+      <input type="time" class="timeInput" id="endTime" required>
+    </div>
+
+      <div class="checkboxRow">
+      <input type="checkbox" id="allDay">
+      <label for="allDay">All day</label>
+    </div>
+
+
+  <div class="form-buttons">   
+    <button type="submit" class="decision">Save</button>
+   <button type="button" class="decision" onclick="closeForm()">Cancel</button>
+  </div>
+
+      <!-- Delete button when editing-->
+      <button type="button" id="deleteBtn" style="display:none; background:red;">Delete</button>
+  </form>
+</div>
+
+<!-- Detail panel-->
+<div id="eventDetail">
+  <div id="eventDetailContent">
+    <p><strong></strong> <span id="detailEventTitle"></span></p>
+    <p>
+      <strong></strong> 
+      <span id="detailEventDate"></span> 
+    </p>
+
+    <p><strong></strong> <span id="detailEventTime"></span></p>
+
+    <div class="detail-buttons">
+
+      <button type="button" id="detailEditBtn">Edit</button>
+      <button type="button" id="detailDeleteBtn">Delete</button>
+      <button type="button" id="detailCloseBtn">Close</button> 
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
